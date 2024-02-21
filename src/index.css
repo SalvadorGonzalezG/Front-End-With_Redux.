@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 body{
-  background-color: rgb(218, 192, 252);
+  background-color: rgb(202, 97, 212);
   display: flex;
   flex-direction: column; /* Apila los elementos uno encima del otro */
   min-height: 100vh; /* Establece el alto mínimo para que la página ocupe al menos toda la altura de la ventana del navegador */
@@ -103,9 +103,9 @@ transition: background-color 0.5s ease;
   position:relative;
   font-size: 2rem;
   font-weight: 700;
-  margin-bottom: 50px;
-  padding: 0 50%;
-  margin-top: -20px;
+  margin-bottom: 12px;
+  padding: 0 46%;
+  margin-top: 0;
 }
 .input-field{
   width: 120%;
@@ -160,4 +160,10 @@ transition: background-color 0.5s ease;
 .submit-button:hover{
   background-color: #007bff;
   color: #fff;
+}
+.img-login{
+  font-size: 8rem;
+  color: #fff;
+  border-radius: 90px;
+  margin-right: -60%;
 }

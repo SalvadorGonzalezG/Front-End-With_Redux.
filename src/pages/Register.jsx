@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { PiUserPlus } from "react-icons/pi";
+import { PiUserCirclePlusLight } from "react-icons/pi";
 
 const Register = () => {
 // Estado donde tendremos los datos del formularios y su set con lo que podremos modificar el estado.
@@ -23,8 +23,7 @@ const Register = () => {
   return (
     <>
     <section className='register'>
-        <h1 className='register'><PiUserPlus/></h1>
-        <p>Registrate.</p>
+        <h1 className="img-login"><PiUserCirclePlusLight/></h1>
     </section>
 
     <section className='section-container'>
