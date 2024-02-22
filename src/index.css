@@ -17,12 +17,12 @@ body{
   border-radius: 20px;
   position: fixed;
   justify-content: space-between;
-  top: 15px;
-  left: 50%;
+  top: 10px;
+  left: 49.5%;
   transform: translateX(-50%);
   width: 50%;
   background-color: #73a5fa; /* Cambia el color de fondo según sea necesario */
-  padding: 50px 0; /* Ajusta el relleno según sea necesario */
+  padding: 25px 0; /* Ajusta el relleno según sea necesario */
   text-align: center; /* Centra el texto horizontalmente */
 }
 
@@ -60,7 +60,7 @@ body{
 
 .productos {
   display: inline-block;
-  padding: 6px 0;
+  padding: 8px 0;
   font-size: 21px;
   font-weight: bold;
   text-decoration: none;
@@ -124,6 +124,7 @@ transition: background-color 0.5s ease;
 .form-container{
   position: relative;
   width: 35%;
+  top: 1px;
 }
 .blue-box{
   position:absolute;
@@ -166,4 +167,14 @@ transition: background-color 0.5s ease;
   color: #fff;
   border-radius: 90px;
   margin-right: -60%;
+}
+.bienvenida{
+  white-space: nowrap;
+  position:static;
+  font-size: 2rem;
+  font-weight: 400;
+  margin-bottom: 12px;
+  padding: 0 44%;
+  margin-top: -80px;
+  height: 55px;
 }

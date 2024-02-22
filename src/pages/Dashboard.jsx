@@ -1,22 +1,47 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { toast } from "react-toastify"
+import ProductoForm from "../components/ProductoForm"
+import Spinner from '../components/Spinner'
+import { getProductos, reset } from "../features/productos/productoSlice"
+
+
 const Dashboard = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+
   const {user} = useSelector((state)=> state.auth)
+  const { misproductos, isLoading, isError, isSuccess, message} = useSelector((state)=> state.producto)
+  
 
   useEffect(()=>{
+    if(isError){
+      console.log(message)
+    }
     if(!user){
       navigate('/login')
-      
+    } else {
+      dispatch(getProductos())
     }
-    },[navigate])
 
+    return ()=>{
+      dispatch(reset())
+    }
+    // al agregar user desaparece la section de abajo
+    },[user, navigate, isError, message, dispatch])
+    if (isLoading){
+      <Spinner/>
+    }
   return (
-    <div mx-auto max-w-7xl px-4 sm:px-6 lg:px-8>
+  <>
+    <section className='bienvenida'>
+      <h1> Hola! {user && user.name} ✨</h1>
+    </section>
 
-    </div>
+    <ProductoForm/>
+    
+  </>
   )
 }
 
