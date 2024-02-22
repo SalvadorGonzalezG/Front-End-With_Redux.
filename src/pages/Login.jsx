@@ -1,5 +1,10 @@
 import {useState, useEffect} from 'react'
 import { PiUserCircleThin } from "react-icons/pi";
+import {useSelector, useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom'
+import {toast} from 'react-toastify'
+import {login, reset} from '../features/auth/authSlice' // mandamos llamar a la funcion reducer del slice register()
+import Spinner from '../components/Spinner';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -7,6 +12,23 @@ const Login = () => {
     password: ''
   })
   const {email, password} = formData
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const {user, isError, isSuccess, isLoading, message } = useSelector((state)=>state.auth)
+
+  useEffect(()=>{
+    if(isError){
+      toast.error(message)
+    }
+    if(isSuccess){
+      navigate('/')
+      toast.success('✨Haz iniciado sesión✨')
+    }
+    dispatch(reset())
+  },[user, isError, isSuccess, message, navigate, dispatch])
+
   const onChange = (e) => {
     setFormData((prevState)=>({
       ...prevState,
@@ -15,7 +37,12 @@ const Login = () => {
   }
   const onSubmit = (e) => {
     e.preventDefault()
+    const userData = {
+      email, password
+    }
+    dispatch(login(userData))
   }
+
   return (
     <>
     <section className='register'>

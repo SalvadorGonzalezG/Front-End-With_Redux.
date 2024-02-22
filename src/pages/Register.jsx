@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react'
-import { PiUserCirclePlusLight } from "react-icons/pi";
+import { PiUserCirclePlusThin } from "react-icons/pi";
+import {useSelector, useDispatch} from 'react-redux';
+import {useNavigate} from 'react-router-dom'
+import {toast} from 'react-toastify'
+import {register, reset} from '../features/auth/authSlice' // mandamos llamar a la funcion reducer del slice register()
+import Spinner from '../components/Spinner';
 
 const Register = () => {
 // Estado donde tendremos los datos del formularios y su set con lo que podremos modificar el estado.
@@ -9,6 +14,24 @@ const Register = () => {
      })
 // desestructuramos los datos del formulario es decir el state.
      const { name, email, password, password2 } = formData
+// inicializamos a navigate y a dispatch
+// redirige nuestra pagina cuando hayamos hecho login
+     const navigate = useNavigate()
+// al hacer clic al boton submit mandemos a llamar a la funcion register
+     const dispatch = useDispatch()
+// desestructuramos los datos del estado global.
+     const { user, isLoading, isError, isSuccess, message } = useSelector((state)=> state.auth)
+
+     useEffect(()=>{
+        if(isError){
+            toast.error(message)
+        }
+        if(isSuccess){
+            navigate('/login')
+            toast.success('✨Usuario Creado 🤘😎',{position: 'bottom-right'})
+        }
+        dispatch(reset())
+     },[user, isError, isSuccess, message, navigate, dispatch])
 // recibe un evento y lo que va a hacer es ejecutar el seter  
      const onChange = (e) => {
 // f: que toma el estado previo hace una copia le agrego cualquier cosa y obtenemos un nuevo estado.
@@ -19,11 +42,23 @@ const Register = () => {
      }
      const onSubmit = (e) => {
         e.preventDefault()
+        if(password !== password2) {
+            toast.error('Corrige tu contraseña')
+        }else{
+// si las contraseñas coinciden creara un objeto llamado userData y se lo va a despachar a la funcion register del slice.
+            const userData = {
+                name, email, password
+            }
+            dispatch(register(userData))
+        }
      }
+     /*if(isLoading){
+        return <Spinner/>
+     }*/
   return (
     <>
     <section className='register'>
-        <h1 className="img-login"><PiUserCirclePlusLight/></h1>
+        <h1 className="img-login"><PiUserCirclePlusThin/></h1>
     </section>
 
     <section className='section-container'>
