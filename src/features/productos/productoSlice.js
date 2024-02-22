@@ -29,6 +29,16 @@ export const getProductos = createAsyncThunk('productos/getProductos', async(_, 
         return thunkAPI.rejectWithValue(message)
     }
 })
+// Borrar producto
+export const deleteProducto = createAsyncThunk('productos/borrar', async(id, thunkAPI)=>{
+    try {
+        const token = thunkAPI.getState().auth.user.token
+        return await productoService.deleteProducto(id, token)
+    } catch (error) {
+        const message= (error.response && error.response.data && error.response.data.message) || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
 
 export const productoSlice = createSlice({
     name: 'producto',
@@ -59,6 +69,19 @@ export const productoSlice = createSlice({
             state.misproductos = action.payload
         })
         .addCase(getProductos.rejected, (state, action)=>{
+            state.isLoading = false
+            state.isError = true
+            state.message = action.payload
+        })
+        .addCase(deleteProducto.pending, (state)=>{
+            state.isLoading = true
+        })
+        .addCase(deleteProducto.fulfilled, (state, action)=>{
+            state.isLoading = false
+            state.isSuccess = true
+            state.misproductos = state.misproductos.filter((producto)=>producto._id !== action.payload.id)
+        })
+        .addCase(deleteProducto.rejected, (state, action)=>{
             state.isLoading = false
             state.isError = true
             state.message = action.payload
