@@ -1,7 +1,7 @@
 import axios from "axios";
 
-//const API_URL = 'http://localhost:5000/api/productos/'
-const API_URL = 'https://fair-girdle-fish.cyclic.app/api/productos/'
+const API_URL = 'http://localhost:5000/api/productos/'
+//const API_URL = 'https://fair-girdle-fish.cyclic.app/api/productos/'
 
 //f: crear un producto
 const crearProducto = async(productoData, token) =>{

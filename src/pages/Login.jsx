@@ -24,7 +24,7 @@ const Login = () => {
     }
     if(isSuccess){
       navigate('/')
-      toast.success('✨Haz iniciado sesión✨')
+      toast.success('✨Haz iniciado sesión✨',{position: 'bottom-right'})
     }
     dispatch(reset())
   },[user, isError, isSuccess, message, navigate, dispatch])

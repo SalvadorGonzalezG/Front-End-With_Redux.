@@ -2,8 +2,8 @@
 import axios from 'axios'
 
 // direccion de nuestra API
-//const API_URL = 'http://localhost:5000/api/users/'
- const API_URL = 'https://fair-girdle-fish.cyclic.app//api/users/'
+const API_URL = 'http://localhost:5000/api/users/'
+ //const API_URL = 'https://fair-girdle-fish.cyclic.app//api/users/'
 
 // f: login de usuario.
 const login = async(userData)=>{

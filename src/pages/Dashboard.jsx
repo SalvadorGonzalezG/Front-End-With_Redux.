@@ -6,6 +6,7 @@ import ProductoForm from "../components/ProductoForm"
 import Spinner from '../components/Spinner'
 import { getProductos, reset } from "../features/productos/productoSlice"
 import ProductoItem from '../components/ProductoItem'
+import { FaRegFaceSadCry } from "react-icons/fa6";
 
 const Dashboard = () => {
   const navigate = useNavigate()
@@ -29,14 +30,15 @@ const Dashboard = () => {
       dispatch(reset())
     }
     // al agregar user desaparece la section de abajo
-  }, [user, navigate, isError, message, dispatch])
+  }, [ navigate, isError, message, dispatch])
   if (isLoading) {
     <Spinner />
   }
   return (
     <>
       <section className='bienvenida'>
-        <h1> Hola! {user && user.name} ✨</h1>
+        <h1> Bienvenido {user && user.name} ✨</h1>
+        
       </section>
 
       <ProductoForm />
@@ -46,12 +48,22 @@ const Dashboard = () => {
           (
             <div className="lista-productos">
               {misproductos.map((producto)=> (
-                <ProductoItem key={producto._id} producto={producto} />
+                <ProductoItem
+                 key={producto._id}
+                 producto={producto}
+                  />
               ))}
             </div>
           ) :
           (
-            <h2>No hay Productos</h2>
+            <div className="sin">
+              <h1>Seccion de Articulos publicados.</h1>
+              <div className="icon-container">
+              <FaRegFaceSadCry/>
+              </div>
+                
+            </div>
+            
           )
         }
 

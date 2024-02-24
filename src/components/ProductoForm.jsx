@@ -24,7 +24,7 @@ const ProductoForm = () => {
         <div className="blue-box"></div>
         <form onSubmit={onSubmit}>
             <div>
-                <label htmlFor="producto">Producto</label>
+                <label htmlFor="producto">Producto:</label>
                 <input
                  className='input-field'
                  type="text"
@@ -32,7 +32,7 @@ const ProductoForm = () => {
                  id='producto' 
                  value={producto} 
                  onChange={(e)=>setProducto(e.target.value)}/>
-                 <label htmlFor="precio">Precio</label>
+                 <label htmlFor="precio">Precio:</label>
                   <input
                    className='input-field'
                    type="text"
@@ -40,7 +40,7 @@ const ProductoForm = () => {
                    id='precio' 
                    value={precio} 
                    onChange={(e)=> setPrecio(e.target.value)} />
-                 <label htmlFor="descripcion">Descripcion</label>
+                 <label htmlFor="descripcion">Descripcion:</label>
                  <textarea
                   className='input-field'
                   name='descripcion' 
