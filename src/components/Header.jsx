@@ -1,4 +1,3 @@
-import {FaSignInAlt, FaSignOutAlt, FaUser} from 'react-icons/fa'
 import { PiUserPlus } from "react-icons/pi";
 import { LiaUser } from "react-icons/lia";
 import { Link, useNavigate } from 'react-router-dom' // Nos permintira hacer links

@@ -1,8 +1,8 @@
 
 const Spinner = () => {
   return (
-    <div>
-        <div>
+    <div className="spinner">
+        <div className="spinner1">
         </div>
     </div>
   )
