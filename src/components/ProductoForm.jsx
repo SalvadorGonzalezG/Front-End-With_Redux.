@@ -16,7 +16,6 @@ const ProductoForm = () => {
         setPrecio('')
         setDescripcion('')
         toast.success('El producto a sido creado correctamente')
-        
     }
   return (
     <section className='section-container'>
